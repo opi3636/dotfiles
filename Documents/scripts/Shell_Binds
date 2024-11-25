@@ -1,0 +1,17 @@
+alias gert='~/.cargo/bin/gert -o ~/Downloads'
+
+alias KillDeck='killall StreamController'
+
+alias rm='rm -i'
+
+alias ClearClip='liphist list | fuzzel --dmenu | cliphist delete'
+
+alias edit-grub="sudo vim /boot/grub/grub.cfg"
+
+alias update="sh $HOME/Documents/scripts/update.sh"
+
+alias twmd="twmd -o ~/Downloads -t"
+
+alias hypredit="sh $HOME/Documents/scripts/.hypredit.sh"
+
+
