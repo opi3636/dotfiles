@@ -120,13 +120,17 @@ button:hover {
 }
 
 #battery {
-    background-color: #ffffff;
+    background-color: #42A5F5;
     color: #000000;
+    border-radius: 13px;
+    margin-right: 20px;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
     background-color: #26A65B;
+    color: #ffffff;
+    border-radius: 13px;
+    margin-right: 20px;
 }
 
 @keyframes blink {
@@ -145,6 +149,8 @@ button:hover {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    border-radius: 13px;
+    margin-right: 20px;
 }
 
 #power-profiles-daemon {
