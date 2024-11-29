@@ -8,10 +8,15 @@ alias ClearClip='liphist list | fuzzel --dmenu | cliphist delete'
 
 alias edit-grub="sudo vim /boot/grub/grub.cfg"
 
+alias dirsyncpro="java -jar /mnt/Data2/DirSyncPro-1.53-Windows/dirsyncpro.jar"
+
 alias update="sh $HOME/Documents/scripts/update.sh"
 
 alias twmd="twmd -o ~/Downloads -t"
 
+alias remountSMB='sudo mount -t cifs //192.168.1.158/SAMBABOI /mnt/SAMBABOI -o username=mpad5543,uid=opi3636,gid=opi3636'
+
 alias hypredit="sh $HOME/Documents/scripts/.hypredit.sh"
 
+alias valorant="sudo grub-reboot Windows11Home && reboot"
 
