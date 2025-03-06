@@ -1,58 +1,34 @@
 // -*- mode: jsonc -*-
 {
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 33, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    //"position": "left", // Waybar position (top|bottom|left|right)
+    "height": 23, // Waybar height (to be removed for auto height)
+    //"width": 33, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // reloads waybar when `style.css` is edited
     "reload_style_on_change": true,
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "custom/waymedia"
+        "custom/updates"
 
     ],
     "modules-center": [
-        "hyprland/window"
-        //"custom/waymedia-buttons"
-        //"custom/media"
-    ],
-    "modules-right": [
-        "custom/updates",
-        "pulseaudio",
-        //"network",
-        "power-profiles-daemon",
-        "cpu",
         "memory",
         "temperature",
-//        "backlight",
-        //"keyboard-state",
+        "cpu",
+        "pulseaudio",
+        "disk",
         "hyprland/language",
         "battery",
-//        "battery#bat2",
-        "disk",
         "clock",
-        "tray",
-        "custom/power"
+        "tray"
     ],
-    // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "modules-right": [
+        "keyboard-state",
+        "hyprland/window",
+        "custom/powerMenu"
+    ],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -101,8 +77,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
@@ -116,15 +92,15 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% ",
+        "format": "{}% ",
         "unit": "GB"
     },
     "temperature": {
         // "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "hwmon-path": "/sys/class/thermal/thermal_zone0/temp",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C"
@@ -149,9 +125,6 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -206,13 +179,13 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
-        "format" : "⏻ ",
+    "custom/powerMenu": {
+        "format" : "⏻",
 		"tooltip": true,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"shutdown": "shutdown",
+			"shutdown": "shutdown now",
 			"reboot": "reboot",
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate",
@@ -228,7 +201,7 @@
          "format": "{name}: {icon}",
          "format-icons": {
              "urgent": "",
-             "focused": "",
+             "active": "",
              "default": ""
          }
      },
@@ -238,8 +211,8 @@
          "format": "{} {icon}",
          "return-type": "json",
          "format-icons": {
-             "has-updates": "󱍷",
-             "updated": ""
+             "has-updates": "",
+             "updated": ""
          },
          "exec-if": "which waybar-module-pacman-updates",
          "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 5 --network-interval-seconds 300"
